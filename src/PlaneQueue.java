@@ -3,6 +3,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PlaneQueue {
     private int maxSize, slowPlanes;
+    // In seconds
+    private final double avgArrivalTime = 146.2;
+    private final double avgServiceTime = 560;
+
     // private double minServiceTime, maxServiceTime;
     Plane[] planes;
     Random rand = new Random();
@@ -17,17 +21,19 @@ public class PlaneQueue {
         planes = new Plane[maxSize];
         double totalTime;
         Random randy = new Random();
-
         long start = System.nanoTime();
+
+        double prevEntryTime = 0.0;
         for (int i = 0; i < planes.length; i++) {
             // System.out.println(maxSize + " | " + i);
             double entryTime, serviceTime;
             serviceTime = Math.round(ThreadLocalRandom.current().nextDouble(minTime, maxTime) * 1000.0) / 1000.0;
-            entryTime = Math.round(ThreadLocalRandom.current().nextDouble(.2, 1.5) * 1000.0) / 1000.0;
+            entryTime = (Math.round(ThreadLocalRandom.current().nextDouble(45.0, 613.0) * 1000.0) / 1000.0) ;
             int airlineIndex = randy.nextInt(airlines.length);
             int planeNumber = randy.nextInt(10000);
-            Plane p = new Plane(planeNumber, entryTime, serviceTime, airlines[airlineIndex]);
+            Plane p = new Plane(planeNumber, entryTime + prevEntryTime, serviceTime, airlines[airlineIndex]);
             planes[i] = p;
+            prevEntryTime = entryTime;
         }
         long end = System.nanoTime();
         totalTime = (end - start) / 1000000.0;
@@ -52,7 +58,7 @@ public class PlaneQueue {
 
         // Order array by firt entry
         start = System.nanoTime();
-        groupByTime(planes);
+        //groupByTime(planes);
         end = System.nanoTime();
         totalTime = (end - start) / 100000.0;
         printTime("Sorting: ", totalTime);
