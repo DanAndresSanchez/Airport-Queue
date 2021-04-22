@@ -7,6 +7,7 @@ public class PlaneQueue {
     Plane[] planes;
     Random rand = new Random();
     Queue<Plane> server = new LinkedList<Plane>();
+    String[] airlines = {"AAL", "JBU", "ENY", "UAL", "ASH", "QTR", "SKW"};
 
     public PlaneQueue(double minTime, double maxTime, int maxSize, int slowPlanes) {
         // this.maxServiceTime = max;
@@ -15,6 +16,7 @@ public class PlaneQueue {
         this.slowPlanes = slowPlanes;
         planes = new Plane[maxSize];
         double totalTime;
+        Random randy = new Random();
 
         long start = System.nanoTime();
         for (int i = 0; i < planes.length; i++) {
@@ -22,7 +24,9 @@ public class PlaneQueue {
             double entryTime, serviceTime;
             serviceTime = Math.round(ThreadLocalRandom.current().nextDouble(minTime, maxTime) * 1000.0) / 1000.0;
             entryTime = Math.round(ThreadLocalRandom.current().nextDouble(.2, 1.5) * 1000.0) / 1000.0;
-            Plane p = new Plane(i, entryTime, serviceTime);
+            int airlineIndex = randy.nextInt(airlines.length);
+            int planeNumber = randy.nextInt(10000);
+            Plane p = new Plane(planeNumber, entryTime, serviceTime, airlines[airlineIndex]);
             planes[i] = p;
         }
         long end = System.nanoTime();

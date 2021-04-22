@@ -1,11 +1,13 @@
-public class Plane {
+public class Plane implements Comparable<Plane>{
     private double entryTime, serviceTime;
-    private int id;
+    private int planeNumber;
+    private String airline;
 
-    public Plane(int id, double entryTime, double serviceTime) {
-        this.id = id;
+    public Plane(int id, double entryTime, double serviceTime, String airline) {
+        this.planeNumber = id;
         this.entryTime = entryTime;
         this.serviceTime = serviceTime;
+        this.airline = airline;
     }
 
     public double getServiceTime() {
@@ -17,7 +19,7 @@ public class Plane {
     }
 
     public int getID() {
-        return id;
+        return planeNumber;
     }
 
     public void setServiceTime(double serviceTime) {
@@ -37,6 +39,6 @@ public class Plane {
     }
 
     public String toString() {
-        return "ID: " + id + "\t\t" + "Entry Time: " + entryTime + "\t" + "Service Time: " + serviceTime;
+        return airline + " " + planeNumber +  "\t\t" + "Entry Time: " + entryTime + "\t" + "Service Time: " + serviceTime;
     }
 }
