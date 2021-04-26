@@ -1,3 +1,5 @@
+package PlaneQueue;
+
 public class Plane implements Comparable<Plane>{
     private double entryTime, serviceTime;
     private int planeNumber;
@@ -39,6 +41,8 @@ public class Plane implements Comparable<Plane>{
     }
 
     public String toString() {
-        return airline + " " + planeNumber +  "\t\t" + "Entry Time: " + entryTime + "\t" + "Service Time: " + serviceTime;
+        //System.out.printf("%10s %12s %8s", "Plane Callsign", "Entry Time", "Service Time");
+        return String.format("%12s %12.3f %12.3f", airline + " " + planeNumber, entryTime, serviceTime);
+        // return airline + " " + planeNumber +  "\t\t" + "Entry Time: " + Math.floor(entryTime * 10000) / 10000.0 + "\t" + "Service Time: " + serviceTime;
     }
 }
