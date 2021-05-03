@@ -11,8 +11,8 @@ public class PlaneQueue {
     String[] airlines = {"AAL", "JBU", "ENY", "UAL", "ASH", "QTR", "SKW"};
 
     public PlaneQueue(double avgServiceTime, double avgArrivalTime, int maxSize, int slowPlanes) {
-        double minServiceTime = avgServiceTime - (avgServiceTime * .9), maxServiceTime = avgServiceTime + (avgServiceTime * .9);
-        double minArrivalTime = avgArrivalTime - (avgArrivalTime * .9), maxArrivalTime = avgArrivalTime + (avgArrivalTime * .9);
+        double minServiceTime = avgServiceTime - (avgServiceTime * .19), maxServiceTime = avgServiceTime + (avgServiceTime * .71);
+        double minArrivalTime = avgArrivalTime - (avgArrivalTime * .69), maxArrivalTime = avgArrivalTime + (avgArrivalTime * .59);
 
         planes = new Plane[maxSize];
         Random randy = new Random();
