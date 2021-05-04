@@ -11,6 +11,7 @@ public class Driver {
         System.out.printf("%12s %12s %12s", "Plane Callsign", "Entry Time", "Service Time\n");
         for(Plane p: sq.planes)
             System.out.println(p.toString());
+            busyTime = busyTime + p.getServiceTime();
     }
     String tempBusy  = String.format("%12.3f", busyTime);
     System.out.printf("Total Busy Time: " + tempBusy);
