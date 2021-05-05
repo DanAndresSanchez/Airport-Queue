@@ -37,8 +37,7 @@ public class Driver {
         
         //Additional calculations for u-hat
         totalSim += lastService;
-        uHat = busyTime / totalSim;
-        uHat *= 100;
+        uHat = (busyTime / totalSim) * 100;
         
         //Additional calculations for q-hat
         moreBusyTime += busyTime;
@@ -48,7 +47,7 @@ public class Driver {
         String tempUHat  = String.format("%7.2f", uHat);
         System.out.printf("u-hat : " + tempUHat + "%% \n");
         
-        String tempQHat  = String.format("%7.2f", qHat);
+        String tempQHat  = String.format("%6.2f", qHat);
         System.out.printf("q-hat : " + tempQHat +  "\n");        
         
         String tempBusy  = String.format("%9.2f", busyTime);
