@@ -8,9 +8,9 @@ public class PlaneQueue {
     Plane[] planes;
     String[] airlines = {"AAL", "JBU", "ENY", "UAL", "ASH", "QTR", "SKW"};
 
-    public PlaneQueue(double avgServiceTime, double avgArrivalTime, int maxSize, int slowPlanes) {
-        double minServiceTime = avgServiceTime - (avgServiceTime * .19), maxServiceTime = avgServiceTime + (avgServiceTime * .71);
-        double minArrivalTime = avgArrivalTime - (avgArrivalTime * .69), maxArrivalTime = avgArrivalTime + (avgArrivalTime * .59);
+    public PlaneQueue(double avgServiceTime, double avgArrivalTime, int maxSize, int slowPlanes, double minServ, double maxServ, double minArr, double maxArr) {
+        double minServiceTime = avgServiceTime - (avgServiceTime * minServ), maxServiceTime = avgServiceTime + (avgServiceTime * maxServ);
+        double minArrivalTime = avgArrivalTime - (avgArrivalTime * minArr), maxArrivalTime = avgArrivalTime + (avgArrivalTime * maxArr);
 
         planes = new Plane[maxSize];
         Random randy = new Random();
