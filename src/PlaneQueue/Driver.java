@@ -18,7 +18,7 @@ public class Driver {
         double workingTime = 0.0; //time each plane takes to finish
         double moreBusyTime = 0.0;
         
-        PlaneQueue sq = new PlaneQueue(avgServiceTime, avgArrivalTime, 30, 5);
+        PlaneQueue sq = new PlaneQueue(avgServiceTime, avgArrivalTime, 30, 5, .19, .71, .69, .59);
         System.out.printf("%12s %12s %12s", "Plane Callsign", "Entry Time", "Service Time\n");
         
         for(Plane p: sq.planes) {
